@@ -1,0 +1,1 @@
+Contains logic for parsing/monitoring artist pages for new tracks.

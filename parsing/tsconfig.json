@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext",
+      "target": "ES2023",
+      "sourceMap": true,
+      "outDir": "dist",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+    },
+    "include": ["src/**/*"],
+}

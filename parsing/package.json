@@ -1,0 +1,22 @@
+{
+  "name": "parsing",
+  "version": "1.0.0",
+  "description": "Handles the parsing of different websites eg. Spotify, Beatport",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/app.js"
+  },
+  "type": "module",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "pg": "^8.12.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
+  }
+}
