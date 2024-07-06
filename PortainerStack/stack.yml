@@ -1,6 +1,6 @@
 ---
 services:
-  db:
+  postgres:
     image: postgres
     restart: always
     # set shared memory limit when using docker-compose
@@ -10,6 +10,17 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
     ports:
       - 5432:5432
+  
+  redis:
+    image: redis/redis-stack
+    restart: always
+    ports:
+      - 6379:6379
+      # Redis insights:
+      - 28592:8001 
+    environment:
+      - REDIS_ARGS=--requirepass ${REDIS_PASSWORD}
+
   adminer:
     image: adminer
     restart: always
