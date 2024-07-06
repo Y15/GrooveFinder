@@ -1,6 +1,5 @@
-import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { Track } from "./entity/Track.js"
+import { Track } from "./postgres-entity/Track.js"
 
 export const AppDataSource = new DataSource({
     type: "postgres",
