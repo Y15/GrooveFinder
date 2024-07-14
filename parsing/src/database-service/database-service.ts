@@ -2,8 +2,6 @@ import { PostgreSQL } from './postgre-database-service.js'
 import { Redis } from './redis-database-service.js'
 import { TrackData } from "./interfaces/track-data.js"
 
-// await this.createTrack("Lorenzo von Matterhorn", "test1337");
-
 export class DatabaseService {
     private static instance: DatabaseService
     private PostgreSQL: PostgreSQL
@@ -26,8 +24,8 @@ export class DatabaseService {
 
     public async initialize() {
         // Innitialize DB Connections
-        await this.PostgreSQL.init()
         await this.Redis.init()
+        await this.PostgreSQL.init()
     }
 
     public async addTrackIfNeeded(trackData: TrackData) {
@@ -44,6 +42,10 @@ export class DatabaseService {
         } else {
             console.log(`Track ${trackData.trackName} already parsed`)
         }
+    }
+
+    public async getMonitoredArtistIDs() {
+        this.PostgreSQL.getMonitoredArtistIDs()
     }
 
 }

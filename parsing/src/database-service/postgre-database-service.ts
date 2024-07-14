@@ -1,8 +1,7 @@
 import { Track } from "./postgre-entities/Track.js"
+import { MonitoredArtists } from "./postgre-entities/monitored-artists.js"
 import { DataSource } from "typeorm"
 import { TrackData } from "./interfaces/track-data.js"
-
-
 
 export class PostgreSQL {
 
@@ -15,13 +14,13 @@ export class PostgreSQL {
         database: "example",
         synchronize: true,
         logging: true,
-        entities: [Track],
+        entities: [Track, MonitoredArtists],
         subscribers: [],
         migrations: [],
     })
 
     public async init() {
-        // Setup PostgresSQL Connection
+        //Setup PostgresSQL Connection
         await this.AppDataSource.initialize()
         console.log("Connection to PostgressSQL established")
     }
@@ -35,6 +34,15 @@ export class PostgreSQL {
         await this.AppDataSource.manager.save(track)
 
         console.log(`Track ${trackData.trackName} inserted`)
+    }
+
+    public async getMonitoredArtistIDs() {
+
+        return await this.AppDataSource.getRepository(MonitoredArtists)
+            .createQueryBuilder('MonitoredArtists')
+            .select('MonitoredArtists.artistId')
+            .getMany();
+
     }
 
 }
