@@ -7,10 +7,11 @@ export class DatabaseService {
     private PostgreSQL: PostgreSQL
     private Redis: Redis
 
-    public static getInstance(): DatabaseService {
+    public static async getInstance(): Promise<DatabaseService> {
 
         if (!DatabaseService.instance) {
             DatabaseService.instance = new DatabaseService()
+            await DatabaseService.instance.initialize()
         }
 
         return DatabaseService.instance
@@ -45,7 +46,7 @@ export class DatabaseService {
     }
 
     public async getMonitoredArtistIDs() {
-        this.PostgreSQL.getMonitoredArtistIDs()
+        return this.PostgreSQL.getMonitoredArtistIDs()
     }
 
 }

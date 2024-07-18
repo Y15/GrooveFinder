@@ -2,17 +2,15 @@ import { Scheduler } from "./scheduler.js"
 import { DatabaseService } from "./database-service/database-service.js"
 import { TrackData } from "./database-service/interfaces/track-data.js"
 import { config } from 'dotenv'
-import { spotify } from './parsing-agents/spotify.js'
+import { Spotify } from './parsing-agents/spotify.js'
 
 try {
     config();
-    console.log(process.env);
 
     const scheduler = new Scheduler()
-    scheduler.register(new spotify)
-    
-    const dbService = DatabaseService.getInstance()
-    await dbService.initialize()
+    scheduler.register(new Spotify)
+
+    const dbService = await DatabaseService.getInstance()
 
     // const newTrack: TrackData = {
     //     artist: "fisch",
@@ -20,8 +18,9 @@ try {
     // }
 
     // await dbService.addTrackIfNeeded(newTrack)
-    console.log(await dbService.getMonitoredArtistIDs())
+    await scheduler.start()
 
 } catch (error) {
-    console.log("error")
+    console.log("teeeeeeeeeeeeeeest")
+    console.log(error)
 }
