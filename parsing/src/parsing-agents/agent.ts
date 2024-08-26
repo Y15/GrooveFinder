@@ -6,17 +6,17 @@ export abstract class Agent {
 
     async start() {
         this.dbService = await DatabaseService.getInstance()
-        this.setToken()
+        await this.setToken()
+        await this.getMonitoredArtists()
+        await this.checkNewReleases()
+    }
 
-        this.getMonitoredArtists()
+    async checkNewReleases() {
     }
 
     async setToken() {
-
     }
 
     async getMonitoredArtists() {
-        const artists = await this.dbService.getMonitoredArtistIDs()
-        console.log("test", artists)
     }
 }
