@@ -1,13 +1,14 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
-@Entity()
+@Entity({ name: 'MonitoredArtists' })
 export class MonitoredArtists {
 
     @PrimaryGeneratedColumn()
-    id: number;  // Primärschlüssel
+    id: number;
 
     @Column({
-        length: 50
+        length: 50,
+        nullable: false
     })
     artistId: string
 }

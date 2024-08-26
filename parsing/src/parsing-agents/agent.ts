@@ -17,6 +17,6 @@ export abstract class Agent {
 
     async getMonitoredArtists() {
         const artists = await this.dbService.getMonitoredArtistIDs()
-        console.log(artists)
+        console.log("test", artists)
     }
 }

@@ -38,10 +38,13 @@ export class PostgreSQL {
 
     public async getMonitoredArtistIDs() {
 
-        return await this.AppDataSource.getRepository(MonitoredArtists)
+        const artists = await this.AppDataSource.getRepository(MonitoredArtists)
             .createQueryBuilder('MonitoredArtists')
-            .select('MonitoredArtists.artistId')
             .getMany();
+
+        console.log(artists)
+
+        return artists
 
     }
 

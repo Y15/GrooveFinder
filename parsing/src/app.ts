@@ -10,8 +10,6 @@ try {
     const scheduler = new Scheduler()
     scheduler.register(new Spotify)
 
-    const dbService = await DatabaseService.getInstance()
-
     // const newTrack: TrackData = {
     //     artist: "fisch",
     //     trackName: "test"
